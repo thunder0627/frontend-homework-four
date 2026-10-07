@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 形状悬停效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            background-color: #1d1b1a;
+        }
+
+        .stage {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(26px, 3.8vw, 56px);
+            padding: 56px 32px;
+        }
+
+        .cube {
+            position: relative;
+            width: clamp(100px, 11.8vw, 170px);
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 24px var(--shadow);
+            transition:
+                transform 0.32s cubic-bezier(0.2, 0.7, 0.3, 1),
+                box-shadow 0.32s ease;
+        }
+
+        .cube span {
+            position: relative;
+            z-index: 1;
+            color: rgba(30, 28, 27, 0.74);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(18px, 1.5vw, 24px);
+            font-weight: 700;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(8px) scale(0.92);
+            transition:
+                opacity 0.25s ease,
+                transform 0.32s cubic-bezier(0.2, 0.7, 0.3, 1);
+        }
+
+        .cube:hover,
+        .cube:focus-visible {
+            outline: none;
+            transform: translateY(-10px);
+            box-shadow: 0 0 24px var(--shadow);
+        }
+
+        .cube:hover span,
+        .cube:focus-visible span {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .c1 {
+            --shadow: rgba(255, 94, 98, 0.36);
+            border-radius: 2px;
+            background: linear-gradient(145deg, #ffad64, #ff5e62);
+        }
+
+        .c2 {
+            --shadow: rgba(35, 203, 139, 0.38);
+            border-radius: 22%;
+            background: linear-gradient(145deg, #32dfa2, #16bb7f);
+        }
+
+        .c3 {
+            --shadow: rgba(126, 104, 153, 0.42);
+            border-radius: 46%;
+            background: linear-gradient(145deg, #a08bb4, #78688d);
+        }
+
+        .c4 {
+            --shadow: rgba(255, 190, 87, 0.36);
+            border-radius: 50%;
+            background: radial-gradient(circle at 38% 32%, #ffdb82, #ffb95e 72%);
+        }
+
+        .c5 {
+            --shadow: rgba(46, 136, 134, 0.42);
+            border-radius: 22%;
+            background: linear-gradient(145deg, #4a9c94, #2f7778);
+        }
+
+        .c6 {
+            --shadow: rgba(167, 124, 192, 0.42);
+            border-radius: 50%;
+            background: radial-gradient(circle at 38% 30%, #d7b5e3, #a87cc0 72%);
+        }
+    </style>
+</head>
+<body>
+    <main class="stage" aria-label="六种可悬停的图形">
+        <div class="cube c1" tabindex="0"><span>hover</span></div>
+        <div class="cube c2" tabindex="0"><span>hover</span></div>
+        <div class="cube c3" tabindex="0"><span>hover</span></div>
+        <div class="cube c4" tabindex="0"><span>hover</span></div>
+        <div class="cube c5" tabindex="0"><span>hover</span></div>
+        <div class="cube c6" tabindex="0"><span>hover</span></div>
+    </main>
+</body>
+</html>
